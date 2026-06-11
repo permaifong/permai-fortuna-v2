@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Permai Polyclinics Fortuna | A gentler standard of family care, Kota Kinabalu</title>
+<meta name="description" content="Permai Polyclinics Fortuna, a private family practice in Kota Kinabalu, Sabah. Caring for Sabahan families since 1993. Open 24 hours: consultation, chronic care, ultrasound, screening, knee and joint injections, and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f3ea;          /* warm ivory base */
+    --paper-2:#efe9dc;        /* slightly deeper panel */
+    --paper-3:#e7e0d0;
+    --ink:#1c2620;            /* deep green-black text */
+    --ink-soft:#586256;       /* muted body */
+    --green:#2c4636;          /* deep evergreen accent */
+    --green-2:#3a5a45;
+    --sage:#cdd6c2;           /* pale celadon */
+    --line:#d8d1bf;           /* hairline */
+    --line-2:#cabfa6;
+    --shadow:0 40px 80px -50px rgba(36,52,38,.55);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:90px;}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"Jost",ui-sans-serif,system-ui,sans-serif;
+    font-size:17px; font-weight:400; line-height:1.7; letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  /* faint paper grain for depth */
+  body::before{
+    content:""; position:fixed; inset:0; z-index:9999; pointer-events:none; opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection{background:var(--green); color:var(--paper);}
+
+  h1,h2,h3,.display{font-family:"Cormorant Garamond",Georgia,serif; font-weight:400; line-height:1; letter-spacing:-.005em;}
+  em{font-style:italic;}
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{width:min(1320px,90%); margin-inline:auto;}
+
+  /* ---------- labels / kickers ---------- */
+  .label{font-family:"Jost",sans-serif; font-weight:500; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-soft);}
+  .kicker{display:flex; align-items:center; gap:14px; margin-bottom:30px;}
+  .kicker .idx{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:19px; color:var(--green);}
+  .kicker .bar{flex:none; width:34px; height:1px; background:var(--green); opacity:.5;}
+  .kicker .label{color:var(--green);}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex; align-items:center; gap:11px; font-family:"Jost",sans-serif; font-weight:500;
+    font-size:13px; letter-spacing:.16em; text-transform:uppercase; padding:17px 30px; border-radius:2px;
+    border:1px solid var(--green); cursor:pointer; transition:all .45s var(--ease); position:relative; overflow:hidden;}
+  .btn .arr{transition:transform .45s var(--ease);}
+  .btn-fill{background:var(--green); color:var(--paper);}
+  .btn-fill:hover{background:var(--ink); border-color:var(--ink);}
+  .btn-fill:hover .arr{transform:translateX(5px);}
+  .btn-line{background:transparent; color:var(--ink);}
+  .btn-line:hover{background:var(--green); color:var(--paper); border-color:var(--green);}
+  .btn-line:hover .arr{transform:translateX(5px);}
+
+  /* animated underline link */
+  .ul{position:relative; display:inline-block;}
+  .ul::after{content:""; position:absolute; left:0; bottom:-3px; width:100%; height:1px; background:currentColor;
+    transform:scaleX(0); transform-origin:right; transition:transform .5s var(--ease);}
+  .ul:hover::after{transform:scaleX(1); transform-origin:left;}
+
+  /* ---------- top strip + header ---------- */
+  .strip{background:var(--green); color:var(--paper);}
+  .strip .wrap{display:flex; justify-content:space-between; align-items:center; height:38px;
+    font-family:"Jost",sans-serif; font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:400;}
+  .strip span{opacity:.85;}
+  @media(max-width:680px){ .strip .wrap span.hide-s{display:none;} }
+
+  header{position:sticky; top:0; z-index:50; background:rgba(247,243,234,.82); backdrop-filter:saturate(140%) blur(12px); border-bottom:1px solid var(--line); transition:border-color .4s;}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:78px;}
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand img{height:40px; width:auto;}
+  .brand .word{font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:500; font-size:27px; color:var(--green); padding-left:14px; border-left:1px solid var(--line);}
+  .menu{display:flex; gap:40px;}
+  .menu a{font-family:"Jost",sans-serif; font-size:12.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); transition:color .3s;}
+  .menu a:hover{color:var(--ink);}
+  .nav-cta{font-family:"Jost",sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--green); border:1px solid var(--green); padding:12px 22px; border-radius:2px; transition:all .4s var(--ease);}
+  .nav-cta:hover{background:var(--green); color:var(--paper);}
+  @media(max-width:920px){ .menu{display:none;} }
+  @media(max-width:480px){ .nav-cta{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{padding:88px 0 96px; position:relative;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center;}
+  .hero-copy .eyebrow{margin-bottom:34px;}
+  .hero h1{font-size:clamp(56px,8.4vw,124px); line-height:.94; letter-spacing:-.015em; margin-bottom:0;}
+  .hero h1 em{color:var(--green);}
+  .hero .lede{max-width:46ch; margin:34px 0 40px; font-size:18.5px; color:var(--ink-soft); font-weight:300; line-height:1.75;}
+  .hero .actions{display:flex; gap:16px; flex-wrap:wrap; align-items:center;}
+  .hero-meta{display:flex; gap:40px; margin-top:54px; padding-top:30px; border-top:1px solid var(--line);}
+  .hero-meta .m b{display:block; font-family:"Cormorant Garamond",serif; font-size:34px; color:var(--green); line-height:1;}
+  .hero-meta .m span{display:block; margin-top:8px; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-soft);}
+
+  /* arched tree frame */
+  .hero-fig{margin:0; position:relative;}
+  .arch{position:relative; overflow:hidden; border-radius:50% 50% 6px 6px / 30% 30% 3px 3px;
+    border:1px solid var(--line); box-shadow:var(--shadow); aspect-ratio:4/5;}
+  .arch::after{content:""; position:absolute; inset:0; border-radius:inherit; box-shadow:inset 0 0 0 1px rgba(255,255,255,.35); pointer-events:none;}
+  .arch img{width:100%; height:100%; object-fit:cover; transform:scale(1.04); animation:kb 22s ease-in-out infinite alternate;}
+  @keyframes kb{from{transform:scale(1.04)} to{transform:scale(1.14)}}
+  .hero-fig figcaption{margin-top:16px; text-align:center; font-family:"Cormorant Garamond",serif; font-style:italic; font-size:17px; color:var(--ink-soft);}
+  .hero-fig .est{position:absolute; top:-14px; left:-14px; width:96px; height:96px; border-radius:50%; background:var(--paper);
+    border:1px solid var(--green); display:grid; place-items:center; text-align:center; z-index:2; box-shadow:0 18px 30px -20px rgba(36,52,38,.5);}
+  .hero-fig .est b{font-family:"Cormorant Garamond",serif; font-size:26px; color:var(--green); line-height:.9;}
+  .hero-fig .est span{font-size:8.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); margin-top:3px;}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr; gap:48px;}
+    .hero-fig{max-width:440px; margin-inline:auto; width:100%;}
+    .hero-meta{gap:28px;}
+  }
+
+  /* ---------- statement ---------- */
+  .statement{padding:120px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--paper-2);}
+  .statement p{font-family:"Cormorant Garamond",serif; font-weight:300; font-size:clamp(28px,4vw,52px); line-height:1.18; letter-spacing:-.01em; max-width:20ch; text-align:left;}
+  .statement p em{color:var(--green);}
+  .statement .wrap{display:grid; grid-template-columns:auto 1fr; gap:60px; align-items:start;}
+  .statement .lead-no{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:22px; color:var(--green); padding-top:10px;}
+  @media(max-width:760px){ .statement .wrap{grid-template-columns:1fr; gap:24px;} .statement{padding:84px 0;} }
+
+  /* ---------- generic section ---------- */
+  section.blk{padding:128px 0;}
+  .sec-top{max-width:680px; margin-bottom:72px;}
+  .sec-top h2{font-size:clamp(40px,5.4vw,76px); line-height:1.02;}
+  .sec-top h2 em{color:var(--green);}
+  .sec-top p{margin-top:24px; color:var(--ink-soft); font-size:18px; font-weight:300; max-width:52ch;}
+
+  /* ---------- practice / about ---------- */
+  .practice{display:grid; grid-template-columns:.85fr 1.15fr; gap:72px; align-items:center;}
+  .portrait{position:relative; margin:0;}
+  .portrait .panel{background:linear-gradient(170deg,var(--sage),var(--paper-2)); border-radius:50% 50% 6px 6px / 26% 26% 3px 3px; border:1px solid var(--line); aspect-ratio:4/5; display:flex; align-items:flex-end; justify-content:center; overflow:hidden;}
+  .portrait .panel img{width:96%; height:auto; object-fit:contain; object-position:bottom; filter:drop-shadow(0 30px 40px rgba(28,38,32,.25));}
+  .portrait figcaption{margin-top:20px; text-align:center;}
+  .portrait figcaption b{font-family:"Cormorant Garamond",serif; font-weight:500; font-size:25px; display:block;}
+  .portrait figcaption span{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft);}
+  .practice .body p{color:var(--ink-soft); font-weight:300; font-size:18px; margin-bottom:22px; max-width:54ch;}
+  .spec{margin-top:40px; border-top:1px solid var(--line);}
+  .spec .r{display:grid; grid-template-columns:170px 1fr; gap:20px; padding:20px 2px; border-bottom:1px solid var(--line); align-items:baseline;}
+  .spec .r .k{font-family:"Jost",sans-serif; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft);}
+  .spec .r .v{font-family:"Cormorant Garamond",serif; font-size:23px; color:var(--ink);}
+  @media(max-width:860px){ .practice{grid-template-columns:1fr; gap:48px;} .portrait{max-width:380px; margin-inline:auto;} }
+
+  /* ---------- care index ---------- */
+  .care{background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .care-list{border-top:1px solid var(--line);}
+  .care-row{display:grid; grid-template-columns:64px 1fr auto; gap:28px; align-items:center; padding:30px 12px; border-bottom:1px solid var(--line); position:relative; transition:padding .5s var(--ease), background .5s var(--ease);}
+  .care-row .no{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:20px; color:var(--green); opacity:.7;}
+  .care-row .nm{font-family:"Cormorant Garamond",serif; font-size:clamp(26px,3vw,40px); line-height:1; transition:color .4s;}
+  .care-row .ds{grid-column:2; max-width:60ch; color:var(--ink-soft); font-weight:300; font-size:15.5px; margin-top:10px; max-height:0; opacity:0; overflow:hidden; transition:max-height .55s var(--ease), opacity .45s var(--ease), margin .4s;}
+  .care-row .go{font-size:22px; color:var(--green); opacity:0; transform:translateX(-8px); transition:all .5s var(--ease);}
+  .care-row:hover{background:var(--paper); padding-left:26px; padding-right:0;}
+  .care-row:hover .nm{color:var(--green);}
+  .care-row:hover .ds{max-height:80px; opacity:1; margin-top:14px;}
+  .care-row:hover .go{opacity:1; transform:translateX(0);}
+  @media(max-width:680px){ .care-row{grid-template-columns:40px 1fr; } .care-row .go{display:none;} .care-row .ds{max-height:none; opacity:1; margin-top:12px;} }
+
+  /* ---------- reassurance ---------- */
+  .assure{display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); border:1px solid var(--line);}
+  .assure .cell{background:var(--paper); padding:48px 40px;}
+  .assure .cell .no{font-family:"Cormorant Garamond",serif; font-style:italic; font-size:19px; color:var(--green); margin-bottom:26px;}
+  .assure .cell h3{font-family:"Cormorant Garamond",serif; font-size:32px; margin-bottom:14px;}
+  .assure .cell p{color:var(--ink-soft); font-weight:300; font-size:16px;}
+  @media(max-width:820px){ .assure{grid-template-columns:1fr;} }
+
+  /* ---------- tree band (the motif moment) ---------- */
+  .band{position:relative; height:62vh; min-height:440px; overflow:hidden; display:grid; place-items:center; text-align:center;}
+  .band img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.06); animation:kb 26s ease-in-out infinite alternate;}
+  .band::after{content:""; position:absolute; inset:0; background:
+      radial-gradient(58% 56% at 50% 52%, rgba(18,28,20,.50), rgba(18,28,20,0) 72%),
+      linear-gradient(180deg, rgba(28,38,32,.20), rgba(18,28,20,.42));}
+  .band .band-in{position:relative; z-index:2; color:var(--paper); padding:0 24px;}
+  .band .label{color:rgba(247,243,234,.8);}
+  .band h2{font-size:clamp(40px,7vw,104px); line-height:1; color:var(--paper); text-shadow:0 2px 30px rgba(20,30,22,.45); margin-top:18px;}
+  .band h2 em{font-weight:300;}
+
+  /* ---------- faq ---------- */
+  .faq-wrap{border-top:1px solid var(--line);}
+  details.q{border-bottom:1px solid var(--line);}
+  details.q summary{list-style:none; cursor:pointer; padding:30px 2px; display:flex; gap:24px; align-items:baseline; font-family:"Cormorant Garamond",serif; font-size:clamp(22px,2.5vw,30px); line-height:1.2; transition:color .3s;}
+  details.q summary::-webkit-details-marker{display:none;}
+  details.q summary:hover{color:var(--green);}
+  details.q summary .qno{font-style:italic; font-size:18px; color:var(--green); flex:none;}
+  details.q summary .sign{margin-left:auto; flex:none; font-family:"Jost",sans-serif; font-weight:300; font-size:26px; color:var(--green); transition:transform .4s var(--ease);}
+  details.q[open] summary .sign{transform:rotate(45deg);}
+  details.q .a{padding:0 2px 30px 44px; max-width:74ch; color:var(--ink-soft); font-weight:300; font-size:16.5px;}
+  @media(max-width:560px){ details.q .a{padding-left:2px;} }
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:start;}
+  .contact-spec{margin-top:8px;}
+  .contact-spec .r{display:grid; grid-template-columns:150px 1fr; gap:18px; padding:22px 2px; border-bottom:1px solid var(--line); align-items:baseline;}
+  .contact-spec .r:first-child{border-top:1px solid var(--line);}
+  .contact-spec .r .k{font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft);}
+  .contact-spec .r .v{font-family:"Cormorant Garamond",serif; font-size:20px; line-height:1.4;}
+  .contact-spec .r .v a{color:var(--green);}
+  .visit{background:var(--green); color:var(--paper); padding:44px; border-radius:3px;}
+  .visit h3{color:var(--paper); font-size:34px; margin-bottom:12px;}
+  .visit p{color:rgba(247,243,234,.78); font-weight:300; font-size:16px; margin-bottom:30px;}
+  .visit .btn{display:flex; justify-content:center; width:100%; margin-bottom:12px;}
+  .visit .btn-fill{background:var(--paper); color:var(--green); border-color:var(--paper);}
+  .visit .btn-fill:hover{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .visit .btn-line{border-color:rgba(247,243,234,.45); color:var(--paper);}
+  .visit .btn-line:hover{background:rgba(247,243,234,.12); border-color:var(--paper);}
+  .map{margin-top:18px; border-radius:3px; overflow:hidden; border:1px solid rgba(247,243,234,.25); line-height:0;}
+  .map iframe{width:100%; height:240px; border:0; filter:grayscale(.2) saturate(1.05);}
+  @media(max-width:860px){ .contact-grid{grid-template-columns:1fr; gap:44px;} }
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink); color:var(--paper); padding:80px 0 40px;}
+  .foot-top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:54px; border-bottom:1px solid rgba(247,243,234,.16);}
+  footer .f-brand{font-family:"Cormorant Garamond",serif; font-size:40px; line-height:1;}
+  footer .f-brand em{font-style:italic; color:var(--sage);}
+  footer .f-brand p{font-family:"Jost",sans-serif; font-size:14px; font-weight:300; color:rgba(247,243,234,.6); margin-top:18px; max-width:34ch; letter-spacing:0;}
+  footer .f-col h4{font-family:"Jost",sans-serif; font-weight:500; font-size:11.5px; letter-spacing:.22em; text-transform:uppercase; color:var(--sage); margin-bottom:20px;}
+  footer .f-col a, footer .f-col p{display:block; color:rgba(247,243,234,.75); font-weight:300; font-size:15px; margin-bottom:11px;}
+  footer .f-col a:hover{color:var(--paper);}
+  .foot-base{display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; padding-top:30px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:rgba(247,243,234,.5);}
+  @media(max-width:760px){ .foot-top{grid-template-columns:1fr; gap:40px;} }
+
+  /* ---------- reveal motion ---------- */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity 1s var(--ease), transform 1s var(--ease);}
+  .reveal.in{opacity:1; transform:none;}
+  /* hero staggered load */
+  .pl{opacity:0; transform:translateY(20px); animation:pl 1.1s var(--ease) forwards;}
+  @keyframes pl{to{opacity:1; transform:none;}}
+  .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}.d6{animation-delay:.85s}
+  @media(prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none;} .pl{animation:none; opacity:1; transform:none;} .arch img,.band img{animation:none;} }
+</style>
+</head>
+<body>
+
+  <!-- top strip -->
+  <div class="strip">
+    <div class="wrap">
+      <span>Open 24 Hours, Every Day</span>
+      <span class="hide-s">Fortuna · Kota Kinabalu, Sabah</span>
+    </div>
+  </div>
+
+  <!-- header -->
+  <header>
+    <div class="wrap nav-in">
+      <a class="brand" href="#top" aria-label="Permai Polyclinics Fortuna">
+        <img src="logo.png" alt="Permai Polyclinics" />
+        <span class="word">Fortuna</span>
+      </a>
+      <nav class="menu">
+        <a href="#practice">The Practice</a>
+        <a href="#care">Areas of Care</a>
+        <a href="#faq">Questions</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <a class="nav-cta" href="https://wa.me/60129393537" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="label eyebrow pl d1">Permai Polyclinics · Established 1993</p>
+        <h1 class="pl d2">A <em>gentler</em><br>standard of<br>family care.</h1>
+        <p class="lede pl d3">For more than three decades we have looked after Sabahan families in Kota Kinabalu. Quiet expertise, unhurried attention, and a door that never closes.</p>
+        <div class="actions pl d4">
+          <a class="btn btn-fill" href="https://wa.me/60129393537" target="_blank" rel="noopener">Send us a WhatsApp <span class="arr">&rarr;</span></a>
+          <a class="btn btn-line" href="#care">Areas of care <span class="arr">&rarr;</span></a>
+        </div>
+        <div class="hero-meta pl d5">
+          <div class="m"><b>30+</b><span>Years of care</span></div>
+          <div class="m"><b>24h</b><span>Open daily</span></div>
+          <div class="m"><b>1</b><span>Family practice</span></div>
+        </div>
+      </div>
+      <figure class="hero-fig pl d4">
+        <div class="est"><div><b>1993</b><span>Since</span></div></div>
+        <div class="arch">
+          <img src="Gemini_Generated_Image_o5hssvo5hssvo5hs.png" alt="A broad rain tree in morning light" />
+        </div>
+        <figcaption>Rooted in Sabah, sheltering generations.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- statement -->
+  <section class="statement">
+    <div class="wrap">
+      <div class="lead-no">i.</div>
+      <p>We practise medicine the way it should feel. <em>Personal, patient,</em> and present at any hour.</p>
+    </div>
+  </section>
+
+  <!-- the practice -->
+  <section class="blk" id="practice">
+    <div class="wrap">
+      <div class="practice">
+        <figure class="portrait reveal">
+          <div class="panel">
+            <img src="doctor-nicholas-cut.png" alt="Dr Nicholas Neelan Jeremiah" />
+          </div>
+          <figcaption>
+            <b>Dr Nicholas Neelan Jeremiah</b>
+            <span>Physician</span>
+          </figcaption>
+        </figure>
+        <div class="body reveal">
+          <div class="kicker"><span class="idx">ii.</span><span class="bar"></span><span class="label">The Practice</span></div>
+          <h2 class="display" style="font-size:clamp(40px,5vw,68px); line-height:1.02;">Strong roots,<br><em>steady hands.</em></h2>
+          <p style="margin-top:30px;">Permai Polyclinics opened its doors in 1993 and has cared for families across Sabah ever since. The Fortuna branch carries that legacy into the neighbourhood, open around the clock and grounded in a single belief: good medicine should feel calm, personal, and kind.</p>
+          <p>From a first childhood check-up to a lifetime of trusted visits, our team looks after every generation with the same unhurried attention.</p>
+          <div class="spec">
+            <div class="r"><div class="k">Established</div><div class="v">1993, over three decades of care</div></div>
+            <div class="r"><div class="k">Hours</div><div class="v">Open 24 hours, every day of the year</div></div>
+            <div class="r"><div class="k">Location</div><div class="v">Fortuna Commercial Centre, Kota Kinabalu</div></div>
+            <div class="r"><div class="k">Led by</div><div class="v">A dedicated team, including Dr Nicholas</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- areas of care -->
+  <section class="blk care" id="care">
+    <div class="wrap">
+      <div class="sec-top reveal">
+        <div class="kicker"><span class="idx">iii.</span><span class="bar"></span><span class="label">Areas of Care</span></div>
+        <h2>Every service, growing from <em>one root.</em></h2>
+        <p>A complete family practice under one roof, from everyday consultations to in-house diagnostics and urgent care.</p>
+      </div>
+      <div class="care-list reveal">
+        <div class="care-row"><span class="no">01</span><div><div class="nm">General Consultation</div><div class="ds">Walk-in and appointment consultations with our resident general practitioners.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">02</span><div><div class="nm">Acute &amp; Chronic Care</div><div class="ds">Everyday illnesses alongside ongoing care for diabetes, asthma, hypertension, and heart disease.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">03</span><div><div class="nm">Emergency Treatment</div><div class="ds">Urgent medical care around the clock, 24 hours a day, every day of the year.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">04</span><div><div class="nm">Vaccinations</div><div class="ds">Immunisations for children and adults, including seasonal and travel vaccines.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">05</span><div><div class="nm">Injections &amp; IV Drips</div><div class="ds">In-clinic injections and intravenous drips whenever they are needed.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">06</span><div><div class="nm">Health Screening</div><div class="ds">Pre-employment and general wellness screening packages.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">07</span><div><div class="nm">In-House Lab Tests</div><div class="ds">Full blood tests, blood glucose, urine tests, and blood pressure checks on-site.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">08</span><div><div class="nm">Ultrasound &amp; Nebuliser</div><div class="ds">Antenatal ultrasound scans and nebuliser treatments in the clinic.</div></div><span class="go">&rarr;</span></div>
+        <div class="care-row"><span class="no">09</span><div><div class="nm">Wound &amp; Joint Care</div><div class="ds">Wound dressing, plus knee and trigger-point intra-articular injections.</div></div><span class="go">&rarr;</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- reassurance -->
+  <section class="blk" id="why">
+    <div class="wrap">
+      <div class="sec-top reveal">
+        <div class="kicker"><span class="idx">iv.</span><span class="bar"></span><span class="label">Why Families Stay</span></div>
+        <h2>Dependable care, <em>quietly delivered.</em></h2>
+      </div>
+      <div class="assure reveal">
+        <div class="cell"><div class="no">01</div><h3>Open around the clock</h3><p>Walk in at any hour, day or night. Routine and emergency care, every single day of the year.</p></div>
+        <div class="cell"><div class="no">02</div><h3>Tests under one roof</h3><p>In-house blood and urine labs, ultrasound, and screening. Answers without the referral.</p></div>
+        <div class="cell"><div class="no">03</div><h3>Care for every age</h3><p>From a baby's first visit to a grandparent's regular check, all in one familiar place.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- tree band -->
+  <section class="band" aria-label="The rain tree">
+    <img src="Gemini_Generated_Image_o5hssvo5hssvo5hs.png" alt="A broad rain tree in Sabah" />
+    <div class="band-in">
+      <p class="label">A living emblem</p>
+      <h2>Rooted in Sabah<br><em>since 1993.</em></h2>
+    </div>
+  </section>
+
+  <!-- faq -->
+  <section class="blk" id="faq">
+    <div class="wrap">
+      <div class="sec-top reveal">
+        <div class="kicker"><span class="idx">v.</span><span class="bar"></span><span class="label">Questions</span></div>
+        <h2>Commonly <em>asked.</em></h2>
+      </div>
+      <div class="faq-wrap reveal">
+        <details class="q"><summary><span class="qno">01</span> Do you offer knee pain treatment and knee injection therapy? <span class="sign">+</span></summary><div class="a">Yes. Our doctors provide intra-articular knee injections and trigger-point injections to relieve joint and muscle pain, alongside assessment and ongoing management of knee and joint conditions.</div></details>
+        <details class="q"><summary><span class="qno">02</span> What is an intra-articular (knee) injection? <span class="sign">+</span></summary><div class="a">It is an injection given directly into the knee joint to reduce inflammation and ease pain. It is a quick, in-clinic procedure performed by our doctors, often used for arthritis and chronic knee pain.</div></details>
+        <details class="q"><summary><span class="qno">03</span> Are you really open 24 hours? <span class="sign">+</span></summary><div class="a">Yes. Permai Polyclinics Fortuna is open 24 hours a day, every day of the year, for both routine and emergency care.</div></details>
+        <details class="q"><summary><span class="qno">04</span> Do I need an appointment, or can I walk in? <span class="sign">+</span></summary><div class="a">Walk-ins are welcome at any time. You can also message us on WhatsApp at 012-939 3537 to arrange a convenient time.</div></details>
+        <details class="q"><summary><span class="qno">05</span> Do you offer pre-employment health screening? <span class="sign">+</span></summary><div class="a">Yes. We provide pre-employment and general health screening packages, including blood pressure, blood glucose, urine tests, and full blood tests.</div></details>
+        <details class="q"><summary><span class="qno">06</span> Do you provide emergency treatment and IV drips? <span class="sign">+</span></summary><div class="a">Yes. We offer emergency treatment around the clock, along with injections and intravenous drips when needed.</div></details>
+        <details class="q"><summary><span class="qno">07</span> Where is the clinic located? <span class="sign">+</span></summary><div class="a">We are at the Fortuna Commercial Centre, Mile 2.5, Jalan Penampang, Kota Kinabalu (Ground Floor, Lot 3, Block D2, Lorong Seroja 2).</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- visit / contact -->
+  <section class="blk" id="visit" style="background:var(--paper-2); border-top:1px solid var(--line);">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="kicker"><span class="idx">vi.</span><span class="bar"></span><span class="label">Visit Us</span></div>
+          <h2 class="display" style="font-size:clamp(40px,5.4vw,72px); line-height:1.02;">Whenever you<br><em>need us.</em></h2>
+          <p style="margin-top:24px; color:var(--ink-soft); font-weight:300; max-width:46ch;">Open day and night, all year round. Message us, call us, or simply walk in.</p>
+          <div class="contact-spec">
+            <div class="r"><div class="k">Address</div><div class="v">Ground Floor, Lot 3, Block D2, Lorong Seroja 2, Fortuna Commercial Centre, Mile 2.5, Jalan Penampang, 88200 Kota Kinabalu, Sabah</div></div>
+            <div class="r"><div class="k">Phone</div><div class="v"><a class="ul" href="tel:+6088239393">088-239393</a></div></div>
+            <div class="r"><div class="k">WhatsApp</div><div class="v"><a class="ul" href="https://wa.me/60129393537" target="_blank" rel="noopener">012-939 3537</a></div></div>
+            <div class="r"><div class="k">Email</div><div class="v"><a class="ul" href="mailto:permaipolyclinics.fortuna@gmail.com">permaipolyclinics.fortuna@gmail.com</a></div></div>
+            <div class="r"><div class="k">Hours</div><div class="v">Open daily, 24 hours</div></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="visit">
+            <h3 class="display">Send us a WhatsApp</h3>
+            <p>Message us on WhatsApp or give us a call, and our team will help you find a time.</p>
+            <a class="btn btn-fill" href="https://wa.me/60129393537" target="_blank" rel="noopener">WhatsApp us <span class="arr">&rarr;</span></a>
+            <a class="btn btn-line" href="tel:+6088239393">Call 088-239393 <span class="arr">&rarr;</span></a>
+            <a class="btn btn-line" href="https://www.google.com/maps/search/Permai+Polyclinics+Fortuna+Kota+Kinabalu" target="_blank" rel="noopener">Get directions <span class="arr">&rarr;</span></a>
+            <div class="map">
+              <iframe
+                src="https://www.google.com/maps?q=Permai%20Polyclinics%20Fortuna%2C%20Lorong%20Seroja%202%2C%20Fortuna%20Commercial%20Centre%2C%20Jalan%20Penampang%2C%2088200%20Kota%20Kinabalu%2C%20Sabah&output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                title="Map to Permai Polyclinics Fortuna"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="f-brand">
+          Permai <em>Polyclinics</em>
+          <p>A family practice in Kota Kinabalu, caring for Sabahan families since 1993. Open every hour of every day.</p>
+        </div>
+        <div class="f-col">
+          <h4>Explore</h4>
+          <a href="#practice">The Practice</a>
+          <a href="#care">Areas of Care</a>
+          <a href="#faq">Questions</a>
+          <a href="#visit">Visit</a>
+        </div>
+        <div class="f-col">
+          <h4>Find Us</h4>
+          <p>Fortuna Commercial Centre,<br>Jalan Penampang, Kota Kinabalu</p>
+          <a href="tel:+6088239393">088-239393</a>
+          <a href="https://wa.me/60129393537" target="_blank" rel="noopener">WhatsApp 012-939 3537</a>
+        </div>
+      </div>
+      <div class="foot-base">
+        <span>&copy; 2026 Permai Polyclinics Fortuna</span>
+        <span>Kota Kinabalu · Sabah · Malaysia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // scroll reveal
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold:.12, rootMargin:'0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
+
+  <!-- structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org","@type":"MedicalClinic",
+    "name":"Permai Polyclinics Fortuna",
+    "description":"A private family practice in Kota Kinabalu, Sabah. Open 24 hours for general consultation, chronic and acute care, vaccinations, health screening, knee and joint injections, ultrasound, and more.",
+    "url":"https://www.permaipolyclinics.com/locations/fortuna-2/",
+    "telephone":"+60882-39393","email":"permaipolyclinics.fortuna@gmail.com","foundingDate":"1993",
+    "address":{"@type":"PostalAddress","streetAddress":"Ground Floor, Lot 3, Block D2, Lorong Seroja 2, Fortuna Commercial Centre, Mile 2.5, Jalan Penampang","addressLocality":"Kota Kinabalu","addressRegion":"Sabah","postalCode":"88200","addressCountry":"MY"},
+    "openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},
+    "medicalSpecialty":"GeneralPractice"
+  }
+  </script>
+</body>
+</html>
